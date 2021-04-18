@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <nav class='navbar is-fixed-bottom has-background-dark is-rounded'>
+        <ul class="navbar-menu">
+            <li class='navbar-item'>
+                <a onclick='document.getElementById("postcontainer").scrollIntoView()' class='button is-outlined is-success'>Go to posts</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="hero is-fullheight has-background-grey-lighter">
+        <div class="container has-text-centered">
+            <br><br><br>
+            <h1 class='title'>{{username}}</h1>
+            <h6 class="subtitle">{{bio}}</h6>
+            <h6 class="subtitle">{{karma}} lifetime upvotes</h6>
+            <hr>
+            <h2 class="title">Posts</h2>
+        </div>
+        <br><br>
+        <div class='container column'>
+            {% for i in posts %} 
+                <div class="card is-rounded is-flex-wrap-wrap is-size-5" id='postcontainer'>
+                    <header class="card-header-title">
+                        <a href="https://replit.com{{ i.url }}"> {{i.title}} </a>
+                    </header>
+                    <hr>
+                    <div class='card-content'>
+                        <h6>Votes: {{i.voteCount}}</h6>
+                        <h6>Posted to {{i.board.name}}</h6>
+                    </div>
+                </div>
+                <br>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
