@@ -4,3 +4,6 @@ from django.shortcuts import render
 
 def index(req):
     return render(req, 'index.html')
+
+def search(req):
+    return render(req, 'search.html')
